@@ -52,7 +52,7 @@
 #define Z_DIAG_PIN                          PG10  // Z-STOP
 #define Z2_DIAG_PIN                         PG11  // Z2-STOP
 #define E0_DIAG_PIN                         PG12  // E0DET
-#define E1_DIAG_PIN                         PG13  // E1DET
+#define E1_DIAG_PIN                         PG13  // E1DET      !*!*!   HEATER_CHAMBER_PIN  On/Off Chamber Heater
 #define E2_DIAG_PIN                         PG14  // E2DET
 #define E3_DIAG_PIN                         PG15  // E3DET
 
@@ -235,9 +235,14 @@
 // Temperature Sensors
 //
 #define TEMP_BED_PIN                        PF3   // TB
+#define TEMP_0_PIN                          PF4   // TH0
 #define TEMP_1_PIN                          PF5   // TH1
 #define TEMP_2_PIN                          PF6   // TH2
 #define TEMP_3_PIN                          PF7   // TH3
+
+#define TEMP_CHAMBER_PIN                    TEMP_3_PIN
+
+
 
 //
 // Heaters / Fans
@@ -246,13 +251,16 @@
 #define HEATER_0_PIN                        PA2   // Heater0
 #define HEATER_1_PIN                        PA3   // Heater1
 #define HEATER_2_PIN                        PB10  // Heater2
-#define HEATER_3_PIN                        PB11  // Heater3
+#define HEATER_3_PIN                        PB11  // Heater3	CASE_LIGHT_PIN (PB11)
 
-#define FAN0_PIN                            PA8   // Fan0
-#define FAN1_PIN                            PE5   // Fan1
-#define FAN2_PIN                            PD12  // Fan2
-#define FAN3_PIN                            PD13  // Fan3
-#define FAN4_PIN                            PD14  // Fan4
+
+
+// CORRECT
+#define FAN0_PIN                            PA8   // Fan0	FAN1_PIN
+#define FAN1_PIN                            PE5   // Fan1 PART COOLING FAN EXT 1
+#define FAN2_PIN                            PD12  // Fan2	PART COOLING FAN EXT 2
+#define FAN3_PIN                            PD13  // Fan3	CONTROLLER_FAN_PIN
+#define FAN4_PIN                            PD14  // Fan4	CHAMBER_AUTO_FAN_PIN
 #define FAN5_PIN                            PD15  // Fan5
 
 //

@@ -21,12 +21,16 @@
  */
 #pragma once
 
+
+#define DIAG_JUMPERS_REMOVED
+#define NO_AUTO_ASSIGN_WARNING
+#define NO_CONFIGURATION_EMBEDDING_WARNING
+
 #define BOARD_INFO_NAME "BTT OCTOPUS PRO V1.0"
 
 //
 // Temperature Sensors
 //
-#define TEMP_0_PIN                          PF4   // TH0
 
 #if TEMP_SENSOR_0_IS_MAX31865
   #define TEMP_0_CS_PIN                     PF8   // Max31865 CS
