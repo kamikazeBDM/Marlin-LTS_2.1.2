@@ -734,9 +734,18 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    #define DEFAULT_Kp_LIST {  17.1585,  15.4397 }
-    #define DEFAULT_Ki_LIST {   1.4116,   1.0324 }
-    #define DEFAULT_Kd_LIST {  52.1403,  57.7252 }
+
+    /*
+      05/12/2025 Octopus Pro
+      Kp: 20.7206 Ki: 1.6936 Kd: 63.3793
+
+    #define DEFAULT_Kp 20.7206
+    #define DEFAULT_Ki 1.6936
+    #define DEFAULT_Kd 63.3793
+    */
+    #define DEFAULT_Kp_LIST {  20.7206,  15.4397 }
+    #define DEFAULT_Ki_LIST {   1.6936,   1.0324 }
+    #define DEFAULT_Kd_LIST {  63.3793,  57.7252 }
   #else
     #define DEFAULT_Kp  22.20
     #define DEFAULT_Ki   1.08
@@ -844,15 +853,16 @@
 // #define DEFAULT_bedKd 305.4
 
   /////////////////////////////////////////
-  // 02/05/2022 BTT OCTOPUS PRO V1.0
-  // M303 E-1 S90 C8 U1
+  // 05/12/2025 BTT OCTOPUS PRO V1.0
+  // M303 E-1 S90 C12 U1
   //
-  // BED: Kp: 143.794 Ki: 28.0932 Kd: 490.675 | M304 P143.7948 I28.0932 D490.6759
+  //  Kp: 146.7103 Ki: 28.6599 Kd: 500.6733
+  //
   //////////////////////////////////////////
 
-#define DEFAULT_bedKp 143.794
-#define DEFAULT_bedKi 28.0932
-#define DEFAULT_bedKd 490.675
+  #define DEFAULT_bedKp 146.7103
+  #define DEFAULT_bedKi 28.6599
+  #define DEFAULT_bedKd 500.6733
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -1308,15 +1318,17 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.6250, 80.6250, 402.0000, 397.0000, 397.0000 }
-
+//#define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.6250, 80.6250, 402.0000, 397.0000, 397.0000 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT  { 81.0500, 81.0500, 403.6500, 400.000, 400.000 }
+//M92 T0 E390.0000
+// M92 X81.0500 Y81.5500 Z403.5500
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 25, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 250, 250 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
