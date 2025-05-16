@@ -354,8 +354,8 @@
   /**
    * Heated chamber watch settings (M141/M191).
    */
-  #define WATCH_CHAMBER_TEMP_PERIOD            420 // (seconds)
-  #define WATCH_CHAMBER_TEMP_INCREASE           2 // (°C)
+  #define WATCH_CHAMBER_TEMP_PERIOD            600 // (seconds)
+  #define WATCH_CHAMBER_TEMP_INCREASE           1 // (°C)
 #endif
 
 /**
@@ -440,6 +440,12 @@
   #endif
 #endif
 
+
+
+
+
+
+
 /**
  * Automatic Temperature Mode
  *
@@ -457,7 +463,7 @@
 #if ENABLED(AUTOTEMP)
   #define AUTOTEMP_OLDWEIGHT    0.98  // Factor used to weight previous readings (0.0 < value < 1.0)
   // Turn on AUTOTEMP on M104/M109 by default using proportions set here
-  //#define AUTOTEMP_PROPORTIONAL
+  #define AUTOTEMP_PROPORTIONAL
   #if ENABLED(AUTOTEMP_PROPORTIONAL)
     #define AUTOTEMP_MIN_P      0 // (°C) Added to the target temperature
     #define AUTOTEMP_MAX_P      5 // (°C) Added to the target temperature
@@ -465,9 +471,17 @@
   #endif
 #endif
 
+
+
+
 // Show Temperature ADC value
 // Enable for M105 to include ADC values read from temperature sensors.
-//#define SHOW_TEMP_ADC_VALUES
+#define SHOW_TEMP_ADC_VALUES
+
+
+
+
+
 
 /**
  * High Temperature Thermistor Support
@@ -595,7 +609,7 @@
  * (Does not work on Sanguinololu with FAN_SOFT_PWM.)
  */
 #define FAN_KICKSTART_TIME  100  // (ms)
-#define FAN_KICKSTART_POWER 180  // 64-255
+#define FAN_KICKSTART_POWER 255  // 64-255
 
 // Some coolers may require a non-zero "off" state.
 //#define FAN_OFF_PWM  1
@@ -693,8 +707,9 @@
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 40
 #define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
-#define CHAMBER_AUTO_FAN_TEMPERATURE 65
-#define CHAMBER_AUTO_FAN_SPEED 128
+
+#define CHAMBER_AUTO_FAN_TEMPERATURE 66
+#define CHAMBER_AUTO_FAN_SPEED 200
 //#define COOLER_AUTO_FAN_TEMPERATURE 18
 //#define COOLER_AUTO_FAN_SPEED 255
 
@@ -787,6 +802,15 @@
   #endif
 #endif
 
+
+
+
+
+
+
+
+
+
 // @section endstops
 
 // If you want endstops to stay on (by default) even when not homing
@@ -858,6 +882,17 @@
   //#define EVENT_GCODE_IDEX_AFTER_MODECHANGE "G28X"
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
 // @section multi stepper
 
 /**
@@ -897,6 +932,18 @@
     #define Y2_ENDSTOP_ADJUSTMENT  0  // Y2 offset relative to Y endstop
   #endif
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
 
 //
 // Multi-Z steppers
@@ -954,7 +1001,7 @@
 
 //#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
 
-#define HOMING_BUMP_MM      { 5, 5, 2 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
+#define HOMING_BUMP_MM      { 5, 5, 3 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
 #define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
@@ -965,7 +1012,13 @@
 //#define HOME_Z_FIRST                        // Home Z first. Requires a real endstop (not a probe).
 //#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
 
+
+
+
+
 // @section bltouch
+
+
 
 #if ENABLED(BLTOUCH)
   /**
@@ -1035,6 +1088,18 @@
   //#define BLTOUCH_HS_MODE true
 
 #endif // BLTOUCH
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @section calibration
 
@@ -1133,6 +1198,17 @@
 
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
 // @section motion control
 
 /**
@@ -1172,6 +1248,16 @@
   //#define SHAPING_MENU                // Add a menu to the LCD to set shaping parameters.
 #endif
 
+
+
+
+
+
+
+
+
+
+
 // @section motion
 
 #define AXIS_RELATIVE_MODES { false, false, false, false }
@@ -1190,6 +1276,15 @@
 #define INVERT_V_STEP_PIN false
 #define INVERT_W_STEP_PIN false
 #define INVERT_E_STEP_PIN false
+
+
+
+
+
+
+
+
+
 
 /**
  * Idle Stepper Shutdown
@@ -1222,13 +1317,23 @@
   #define SLOWDOWN_DIVISOR 2
 #endif
 
+
+
+
+
+
+
+
+
+
+
 /**
  * XY Frequency limit
  * Reduce resonance by limiting the frequency of small zigzag infill moves.
  * See https://hydraraptor.blogspot.com/2010/12/frequency-limit.html
  * Use M201 F<freq> S<min%> to change limits at runtime.
  */
-//#define XY_FREQUENCY_LIMIT      10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
+#define XY_FREQUENCY_LIMIT      10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
 #ifdef XY_FREQUENCY_LIMIT
   #define XY_FREQUENCY_MIN_PERCENT 5 // (%) Minimum FR percentage to apply. Set with M201 S<min%>.
 #endif
@@ -1343,6 +1448,14 @@
   #endif
 #endif
 
+
+
+
+
+
+
+
+
 /**
  * Adaptive Step Smoothing increases the resolution of multi-axis moves, particularly at step frequencies
  * below 1kHz (for AVR) or 10kHz (for ARM), where aliasing between axes in multi-axis moves causes audible
@@ -1364,6 +1477,15 @@
 
 // Microstep settings (Requires a board with pins named X_MS1, X_MS2, etc.)
 #define MICROSTEP_MODES { 16, 16, 16, 16, 16, 16 } // [1,2,4,8,16]
+
+
+
+
+
+
+
+
+
 
 /**
  *  @section  stepper motor current
@@ -1417,6 +1539,20 @@
   //#define DIGIPOT_I2C_ADDRESS_B 0x2D  // Unshifted slave address for second DIGIPOT
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //===========================================================================
 //=============================Additional Features===========================
 //===========================================================================
@@ -1425,13 +1561,15 @@
 
 #if HAS_MANUAL_MOVE_MENU
   //#define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
-  #define MANUAL_FEEDRATE { 100*60, 100*60, 12*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE { 150*60, 150*60, 18*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
   #define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
   #if IS_ULTIPANEL
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
     #define ULTIPANEL_FEEDMULTIPLY  // Encoder sets the feedrate multiplier on the Status Screen
   #endif
 #endif
+
+
 
 // Change values more rapidly when the encoder is rotated faster
 #define ENCODER_RATE_MULTIPLIER
@@ -1440,12 +1578,17 @@
   #define ENCODER_100X_STEPS_PER_SEC  80  // (steps/s) Encoder rate for 100x speed
 #endif
 
+
+
+
 // Play a beep when the feedrate is changed from the Status Screen
 //#define BEEP_ON_FEEDRATE_CHANGE
 #if ENABLED(BEEP_ON_FEEDRATE_CHANGE)
   #define FEEDRATE_CHANGE_BEEP_DURATION   10
   #define FEEDRATE_CHANGE_BEEP_FREQUENCY 440
 #endif
+
+
 
 //
 // LCD Backlight Timeout
@@ -1532,6 +1675,16 @@
   // Show the E position (filament used) during printing
   #define LCD_SHOW_E_TOTAL
 
+
+
+
+
+
+
+
+
+
+
   /**
    * LED Control Menu
    * Add LED Control to the LCD menu
@@ -1540,12 +1693,15 @@
   #if ENABLED(LED_CONTROL_MENU)
     #define LED_COLOR_PRESETS                 // Enable the Preset Color menu option
     //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
+
     #if ENABLED(LED_COLOR_PRESETS)
+
       #define LED_USER_PRESET_RED        255  // User defined RED value
-      #define LED_USER_PRESET_GREEN      0  // User defined GREEN value
-      #define LED_USER_PRESET_BLUE         255  // User defined BLUE value
+      #define LED_USER_PRESET_GREEN      185  // User defined GREEN value
+      #define LED_USER_PRESET_BLUE         235  // User defined BLUE value
       #define LED_USER_PRESET_WHITE      0  // User defined WHITE value
       #define LED_USER_PRESET_BRIGHTNESS 255  // User defined intensity
+
       #define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
     #endif
     #if ENABLED(NEO2_COLOR_PRESETS)
@@ -1559,6 +1715,14 @@
   #endif
 
 #endif // HAS_DISPLAY || DWIN_LCD_PROUI
+
+
+
+
+
+
+
+
 
 // Add 'M73' to set print job progress, overrides Marlin's built-in estimate
 #define SET_PROGRESS_MANUALLY
@@ -1811,6 +1975,16 @@
     //#define CUSTOM_FIRMWARE_UPLOAD
   #endif
 
+
+
+
+
+
+
+
+
+
+
   /**
    * Set this option to one of the following (or the board's defaults apply):
    *
@@ -1904,6 +2078,12 @@
     #endif
   #endif
 
+
+
+
+
+
+
   /**
    * Status (Info) Screen customization
    * These options may affect code size and screen render time.
@@ -1918,9 +2098,11 @@
   //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
   //#define STATUS_COOLER_ANIM        // Use a second bitmap to indicate laser cooling
   //#define STATUS_FLOWMETER_ANIM     // Use multiple bitmaps to indicate coolant flow
-  //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
-  //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
-  #define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
+
+  #define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
+  #define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
+
+  #define STATUS_FAN_FRAMES 4       // :[0,1,2,3,4] Number of fan animation frames
   #define STATUS_HEAT_PERCENT       // Show heating in a progress bar
   #define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~3260 (or ~940) bytes of flash.
 
@@ -2118,6 +2300,15 @@
   #define ADC_BUTTON_DEBOUNCE_DELAY 16  // Increase if buttons bounce or repeat too fast
 #endif
 
+
+
+
+
+
+
+
+
+
 // @section safety
 
 /**
@@ -2131,8 +2322,19 @@
  */
 #define USE_WATCHDOG
 #if ENABLED(USE_WATCHDOG)
-  //#define WATCHDOG_RESET_MANUAL
+  #define WATCHDOG_RESET_MANUAL
 #endif
+
+
+
+
+
+
+
+
+
+
+
 
 // @section lcd
 
@@ -2173,6 +2375,19 @@
   #endif
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // @section extruder
 
 /**
@@ -2202,6 +2417,12 @@
   #define ALLOW_LOW_EJERK       // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
   //#define EXPERIMENTAL_I2S_LA   // Allow I2S_STEPPER_STREAM to be used with LA. Performance degrades as the LA step rate reaches ~20kHz.
 #endif
+
+
+
+
+
+
 
 // @section leveling
 
@@ -2364,10 +2585,19 @@
 //
 //#define SAVED_POSITIONS 1         // Each saved position slot costs 12 bytes
 
+
+
+
+
+
+
+
+
+
 //
 // G2/G3 Arc Support
 //
-#define ARC_SUPPORT                   // Requires ~3226 bytes
+//#define ARC_SUPPORT                   // Requires ~3226 bytes
 #if ENABLED(ARC_SUPPORT)
   #define MIN_ARC_SEGMENT_MM      0.1 // (mm) Minimum length of each arc segment
   #define MAX_ARC_SEGMENT_MM      1.0 // (mm) Maximum length of each arc segment
@@ -2378,12 +2608,22 @@
   //#define SF_ARC_FIX                // Enable only if using SkeinForge with "Arc Point" fillet procedure
 #endif
 
+
+
+
 // G5 Bézier Curve Support with XYZE destination and IJPQ offsets
 #define BEZIER_CURVE_SUPPORT        // Requires ~2666 bytes
 
 #if EITHER(ARC_SUPPORT, BEZIER_CURVE_SUPPORT)
   //#define CNC_WORKSPACE_PLANES      // Allow G2/G3/G5 to operate in XY, ZX, or YZ planes
 #endif
+
+
+
+
+
+
+
 
 /**
  * Direct Stepping
@@ -2426,8 +2666,8 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MINIMUM_STEPPER_POST_DIR_DELAY 650
-//#define MINIMUM_STEPPER_PRE_DIR_DELAY 650
+#define MINIMUM_STEPPER_POST_DIR_DELAY 20
+#define MINIMUM_STEPPER_PRE_DIR_DELAY 20
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -2440,7 +2680,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MINIMUM_STEPPER_PULSE 2
+#define MINIMUM_STEPPER_PULSE 0
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -2454,12 +2694,37 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MAXIMUM_STEPPER_RATE 250000
+#define MAXIMUM_STEPPER_RATE 5000000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @section temperature
 
 // Control heater 0 and heater 1 in parallel.
 //#define HEATERS_PARALLEL
+
+
+
+
+
+
+
+
+
+
 
 //===========================================================================
 //================================= Buffers =================================
@@ -2477,6 +2742,15 @@
   #define BLOCK_BUFFER_SIZE 16
 #endif
 
+
+
+
+
+
+
+
+
+
 // @section serial
 
 // The ASCII buffer for serial input
@@ -2490,13 +2764,17 @@
 // For debug-echo: 128 bytes for the optimal speed.
 // Other output doesn't need to be that speedy.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256]
-#define TX_BUFFER_SIZE 0
+#define TX_BUFFER_SIZE 32
+
+
+
+
 
 // Host Receive Buffer Size
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
 // To use flow control, set this buffer size to at least 1024 bytes.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-//#define RX_BUFFER_SIZE 1024
+#define RX_BUFFER_SIZE 1024
 
 #if RX_BUFFER_SIZE >= 1024
   // Enable to have the controller send XON/XOFF control characters to
@@ -2556,17 +2834,25 @@
  * Some other clients start sending commands while receiving a 'wait'.
  * This "wait" is only sent when the buffer is empty. 1 second is a good value here.
  */
-//#define NO_TIMEOUTS 1000 // (ms)
+#define NO_TIMEOUTS 1000 // (ms)
+
+
+
 
 // Some clients will have this feature soon. This could make the NO_TIMEOUTS unnecessary.
 #define ADVANCED_OK
+
+
 
 // Printrun may have trouble receiving long strings all at once.
 // This option inserts short delays between lines of serial output.
 #define SERIAL_OVERRUN_PROTECTION
 
+
+
 // For serial echo, the number of digits after the decimal point
 #define SERIAL_FLOAT_PRECISION 4
+
 
 /**
  * Set the number of proportional font spaces required to fill up a typical character space.
@@ -2576,6 +2862,10 @@
  * Otherwise, adjust according to your client and font.
  */
 #define PROPORTIONAL_FONT_RATIO 1.0
+
+
+
+
 
 // @section extras
 
@@ -2587,6 +2877,19 @@
  *   'M106 P<fan> T1'     : Restore the previous fan speed
  */
 //#define EXTRA_FAN_SPEED
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @section gcode
 
@@ -2623,6 +2926,14 @@
     //#define RETRACT_SYNC_MIXING           // Retract and restore all mixing steppers simultaneously
   #endif
 #endif
+
+
+
+
+
+
+
+
 
 // @section tool change
 
@@ -2714,6 +3025,14 @@
   #endif
 #endif // HAS_MULTI_EXTRUDER
 
+
+
+
+
+
+
+
+
 // @section advanced pause
 
 /**
@@ -2774,6 +3093,15 @@
   //#define FILAMENT_UNLOAD_ALL_EXTRUDERS         // Allow M702 to unload all extruders above a minimum target temp (as set by M302)
 #endif
 
+
+
+
+
+
+
+
+
+
 // @section tmc_smart
 
 /**
@@ -2799,7 +3127,15 @@
  *   https://github.com/teemuatlut/TMCStepper
  *
  * @section tmc/config
+ *
+ *
+ * M906 X1600 Y1700 Z1200
+ *   Recv: echo:  M906 T0 E750
+ *   Recv: echo:  M906 T1 E750
+ *
+ *
  */
+
 #if HAS_TRINAMIC_CONFIG || HAS_TMC26X
 
   #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
@@ -2811,7 +3147,7 @@
   #define INTERPOLATE      true
 
   #if AXIS_IS_TMC_CONFIG(X)
-    #define X_CURRENT       800        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       1600        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  ( X_CURRENT / 3 )  // (mA) RMS current for homing. (Typically lower than *_CURRENT.)
     #define X_MICROSTEPS     16        // 0..256
     #define X_RSENSE          0.11     // Multiplied x1000 for TMC26X
@@ -2831,7 +3167,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Y)
-    #define Y_CURRENT       800
+    #define Y_CURRENT       1700
     #define Y_CURRENT_HOME  ( Y_CURRENT / 3 )
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
@@ -2851,7 +3187,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(Z)
-    #define Z_CURRENT       900
+    #define Z_CURRENT       1200
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
@@ -2951,7 +3287,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(E0)
-    #define E0_CURRENT      800
+    #define E0_CURRENT      750
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
@@ -3198,11 +3534,11 @@
    */
   #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     200  // [mm/s]
+  #define X_HYBRID_THRESHOLD     220  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     200
+  #define Y_HYBRID_THRESHOLD     220
   #define Y2_HYBRID_THRESHOLD    100
-  #define Z_HYBRID_THRESHOLD       10
+  #define Z_HYBRID_THRESHOLD       12
   #define Z2_HYBRID_THRESHOLD      3
   #define Z3_HYBRID_THRESHOLD      3
   #define Z4_HYBRID_THRESHOLD      3
@@ -3220,6 +3556,14 @@
   #define E5_HYBRID_THRESHOLD     30
   #define E6_HYBRID_THRESHOLD     30
   #define E7_HYBRID_THRESHOLD     30
+
+
+
+
+
+
+
+
 
   /**
    * Use StallGuard to home / probe X, Y, Z.
@@ -3269,6 +3613,18 @@
     //#define IMPROVE_HOMING_RELIABILITY
   #endif
 
+
+
+
+
+
+
+
+
+
+
+
+
   // @section tmc/config
 
   /**
@@ -3281,7 +3637,7 @@
    *
    * Values from 0..1023, -1 to disable homing phase for that axis.
    */
-   //#define TMC_HOME_PHASE { 896, 896, 896 }
+   #define TMC_HOME_PHASE { 896, 896, 896 }
 
   /**
    * Step on both rising and falling edge signals (as with a square wave).
@@ -3308,6 +3664,15 @@
   #define TMC_ADV() {  }
 
 #endif // HAS_TRINAMIC_CONFIG || HAS_TMC26X
+
+
+
+
+
+
+
+
+
 
 // @section i2cbus
 
@@ -3570,6 +3935,13 @@
   #endif
 #endif // SPINDLE_FEATURE || LASER_FEATURE
 
+
+
+
+
+
+
+
 /**
  * Synchronous Laser Control with M106/M107
  *
@@ -3596,6 +3968,19 @@
   #define COOLANT_MIST_INVERT  false  // Set "true" if the on/off function is reversed
   #define COOLANT_FLOOD_INVERT false  // Set "true" if the on/off function is reversed
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @section filament width
 
@@ -3632,6 +4017,17 @@
   //#define FILAMENT_LCD_DISPLAY
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
 // @section power
 
 /**
@@ -3667,6 +4063,16 @@
  * Disable protection if your stepper drivers don't support the feature.
  */
 //#define DISABLE_DRIVER_SAFE_POWER_PROTECT
+
+
+
+
+
+
+
+
+
+
 
 // @section cnc
 
@@ -3746,6 +4152,15 @@
   #endif
 #endif
 
+
+
+
+
+
+
+
+
+
 // @section reporting
 
 /**
@@ -3801,6 +4216,18 @@
 #ifdef G0_FEEDRATE
   //#define VARIABLE_G0_FEEDRATE // The G0 feedrate is set by F in G0 motion mode
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Startup commands
@@ -3858,6 +4285,17 @@
   //#define MAIN_MENU_ITEM_5_CONFIRM
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
 // @section custom config menu
 
 // Custom Menu: Configuration Menu
@@ -3889,6 +4327,18 @@
   //#define CONFIG_MENU_ITEM_5_GCODE "M118 ????"
   //#define CONFIG_MENU_ITEM_5_CONFIRM
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
 
 // @section custom buttons
 
@@ -3923,6 +4373,15 @@
   #endif
 #endif
 
+
+
+
+
+
+
+
+
+
 // @section host
 
 /**
@@ -3944,11 +4403,18 @@
   #define HOST_PAUSE_M76                // Tell the host to pause in response to M76
   #define HOST_PROMPT_SUPPORT           // Initiate host prompts to get user feedback
   #if ENABLED(HOST_PROMPT_SUPPORT)
-    //#define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
+    #define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
   #endif
   #define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
   #define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
 #endif
+
+
+
+
+
+
+
 
 // @section extras
 
@@ -3975,6 +4441,9 @@
  * Reliabuild encoders have been modified to improve reliability.
  * @section i2c encoders
  */
+
+
+
 
 //#define I2C_POSITION_ENCODERS
 #if ENABLED(I2C_POSITION_ENCODERS)
@@ -4084,6 +4553,9 @@
   //#define GANTRY_CALIBRATION_COMMANDS_PRE   ""
   #define GANTRY_CALIBRATION_COMMANDS_POST  "G28"     // G28 highly recommended to ensure an accurate position
 #endif
+
+
+
 
 /**
  * Instant freeze / unfreeze functionality

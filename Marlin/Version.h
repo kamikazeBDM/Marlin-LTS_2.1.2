@@ -34,15 +34,15 @@
 
 
 /*************************************
- * Marlin LTS 2.1.2
+ * Marlin LTS 2.1.2.5
  * Compiled version identifier
  ************************************/
-#define COMPILE_VERSION "01"
+#define COMPILE_VERSION "02"
 
 //#define SHORT_BUILD_VERSION "LTS " COMPILE_VERSION
 #define STRING_CONFIG_H_AUTHOR "BDM"                    // Who made the changes.
 #define CUSTOM_MACHINE_NAME "BTT OCTOPUS PRO v1.0 TMC-2209"     // Name displayed in the LCD "Ready" message and Info menu
-#define MACHINE_NAME "Custom Ender 3 Pro"
+#define MACHINE_NAME "Ender 3 Pro"
 
 /*******************************************************************************************************
  *
@@ -52,10 +52,12 @@
  * !! BigTreeTech Octopus Pro V1.0 (STM32F429ZGT6 ARM Cortex-M4)
  * !! GitHub: kamikazebdm@gmail.com -> brendon@m2mwireless.com ( collaborator )
  *
+ * V02  05/16/2022 09:00
+ *
  *
  * V01  05/11/2022 15:11
  *      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- *      !! Marlin LTS-2.1.2 Code base upgrade
+ *      !! Marlin LTS-2.1.2.5 Code base upgrade
  *      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  *
  * V07  03/04/2022 12:42

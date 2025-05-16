@@ -1073,6 +1073,13 @@
   //#define DELTA_DIAGONAL_ROD_TRIM_TOWER { 0.0, 0.0, 0.0 } // (mm)
 #endif
 
+
+
+
+
+
+
+
 // @section scara
 
 /**
@@ -1118,6 +1125,16 @@
 
 #endif
 
+
+
+
+
+
+
+
+
+
+
 // @section tpara
 
 // Enable for TPARA kinematics and configure below
@@ -1142,6 +1159,16 @@
   #define MIDDLE_DEAD_ZONE_R   0  // (mm)
 #endif
 
+
+
+
+
+
+
+
+
+
+
 // @section machine
 
 // Articulated robot (arm). Joints are directly mapped to axes with no kinematics.
@@ -1150,6 +1177,18 @@
 // For a hot wire cutter with parallel horizontal axes (X, I) where the heights of the two wire
 // ends are controlled by parallel axes (Y, J). Joints are directly mapped to axes (no kinematics).
 //#define FOAMCUTTER_XYUV
+
+
+
+
+
+
+
+
+
+
+
+
 
 //===========================================================================
 //============================== Endstop Settings ===========================
@@ -1319,16 +1358,15 @@
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 500 }
 //#define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.6250, 80.6250, 402.0000, 397.0000, 397.0000 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT  { 81.0500, 81.0500, 403.6500, 400.000, 400.000 }
-//M92 T0 E390.0000
-// M92 X81.0500 Y81.5500 Z403.5500
+#define DEFAULT_AXIS_STEPS_PER_UNIT  { 80.0000, 80.4435, 403.7500, 400.000, 400.000 }
+
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 250, 250 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 25, 300, 300 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1341,7 +1379,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 400, 10000, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1398,7 +1436,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.018 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.22 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1868,7 +1906,7 @@
  */
 #define Z_IDLE_HEIGHT Z_HOME_POS
 
-#define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
+#define Z_HOMING_HEIGHT  10      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
 #define Z_AFTER_HOMING  10      // (mm) Height to move to after homing Z
@@ -1906,7 +1944,10 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 220
+
+
+#define Z_MAX_POS 200
+
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -2266,6 +2307,21 @@
   #define MESH_EDIT_MENU        // Add a menu to edit mesh points
 #endif
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Add a menu item to move between bed corners for manual bed adjustment
 #define LCD_BED_TRAMMING
 
@@ -2301,6 +2357,16 @@
   #define BED_TRAMMING_LEVELING_ORDER { LF,RB,LB,RF  }
 #endif
 
+
+
+
+
+
+
+
+
+
+
 // @section homing
 
 // The center of the bed is at (X=0, Y=0)
@@ -2333,7 +2399,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (150*60), (150*60), (15*60) }
+#define HOMING_FEEDRATE_MM_M { (160*60), (160*60), (20*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2468,6 +2534,21 @@
 #define PREHEAT_2_TEMP_CHAMBER 0
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
+
+#define PREHEAT_3_LABEL       "ASA"
+#define PREHEAT_3_TEMP_HOTEND 260
+#define PREHEAT_3_TEMP_BED    105
+#define PREHEAT_3_TEMP_CHAMBER 0
+#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
+
+
+
+
+
+
+
+
+
 /**
  * @section nozzle park
  *
@@ -2568,6 +2649,11 @@
   //#define WIPE_SEQUENCE_COMMANDS "G1 X-17 Y25 Z10 F4000\nG1 Z1\nM114\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 X-17 Y25\nG1 X-17 Y95\nG1 Z15\nM400\nG0 X-10.0 Y-9.0"
 
 #endif
+
+
+
+
+
 
 // @section host
 
